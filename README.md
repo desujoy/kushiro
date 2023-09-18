@@ -15,3 +15,4 @@ You need to put your MyAnimeList Client ID in ```index.js```. Create from [here]
 npm i
 node index.js
 ```
+Website will be opened at http://localhost:3000/
