@@ -1,0 +1,19 @@
+<%- include("header.ejs") %>
+
+<div>
+    <h1>Enter Your MyAnimeList Profile:</h1>
+    <form action="/search" method="post">
+        <input type="text" name="mal" placeholder="MyAnimeList Profile" required> 
+        <button type="submit">Search</button>
+    </form>
+</div>
+<% if(data!=null) {%>
+<div>
+    <h1>Random Anime from Your Plan To Watch List:</h1>
+    <h3><%= data.title %></h3>
+    <img src="<%= data.main_picture.medium %>" alt="Anime Image">
+    <h5><a href="https://myanimelist.net/anime/<%- data.id %>">LINK</a></h5>
+</div>
+<% } %>
+
+<%- include("footer.ejs") %>
