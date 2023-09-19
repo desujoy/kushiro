@@ -9,7 +9,7 @@
 </div>
 <% if(data!=null) {%>
     <h1>Random Anime from Your Plan To Watch List:</h1>
-    <% for (var i = 0; i < data.length; i++) { %>
+    <% for (var i = 0; i < limit; i++) { %>
         <div>
             <h3><%= data[i].title %></h3>
             <a href="https://myanimelist.net/anime/<%= mal.id %>" target="_blank"><img src="<%= data[i].poster %>" height="400px" ></a>

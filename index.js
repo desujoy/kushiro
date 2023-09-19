@@ -10,6 +10,7 @@ if(process.env.MAL_CLIENT_ID == undefined || process.env.MAL_LIMIT == undefined)
 
 const app = express();
 const port = 3000;
+const DISP_LIMIT = 1;
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -46,7 +47,7 @@ app.get("/", async (req, res) => {
       };
       animelist.push(anime);
     }
-    res.render("index.ejs", { data: animelist, mal: list[random] });
+    res.render("index.ejs", { data: animelist, mal: list[random], limit: DISP_LIMIT });
     // console.log(animelist);
     // console.log(list[random]);
     list = [];
