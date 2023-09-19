@@ -38,6 +38,7 @@ app.get("/", async (req, res) => {
       const anime = {
         title: data[i].attributes.canonicalTitle,
         poster: data[i].attributes.posterImage.original,
+        genre: data[i].attributes.genres,
         synopsis: data[i].attributes.synopsis,
         rating: data[i].attributes.averageRating,
         status: data[i].attributes.status,
