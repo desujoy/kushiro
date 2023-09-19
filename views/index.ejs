@@ -12,7 +12,7 @@
     <% for (var i = 0; i < data.length; i++) { %>
         <div>
             <h3><%= data[i].title %></h3>
-            <img src="<%= data[i].poster %>" height="400px" >
+            <a href="https://myanimelist.net/anime/<%= mal.id %>" target="_blank"><img src="<%= data[i].poster %>" height="400px" ></a>
         </div>
     <% } %>
 <% } %>

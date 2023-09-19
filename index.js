@@ -46,7 +46,7 @@ app.get("/", async (req, res) => {
       };
       animelist.push(anime);
     }
-    res.render("index.ejs", { data: animelist });
+    res.render("index.ejs", { data: animelist, mal: list[random] });
     // console.log(animelist);
     // console.log(list[random]);
     list = [];
