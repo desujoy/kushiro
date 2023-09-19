@@ -20,9 +20,7 @@ const HEADER = {
 app.get("/", async (req, res) => {
     if(list.length!=0){
         const random = Math.floor(Math.random() * list.length);
-        const url = BASEURL + GET_ANIME + list[random];
-        const response = await axios.get(url, HEADER);
-        const data = response.data;
+        const data = list[random];
         res.render("index.ejs", {data: data});
         // console.log(data);
         list=[];
@@ -38,10 +36,10 @@ app.post("/search", async (req, res) => {
     const url = BASEURL + "users/" + username + PTW_EXT;
     const response = await axios.get(url, HEADER);
     const data = response.data.data;
-    list = []
     for(var i=0; i<data.length; i++){
-        list.push(data[i].node.id)
+        list.push(data[i].node)
     }
+    // console.log(list);
     res.redirect("/");
 })
 
