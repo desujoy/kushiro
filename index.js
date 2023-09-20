@@ -40,37 +40,35 @@ app.get("/", async (req, res) => {
         poster: data[i].attributes.posterImage.original,
         genre: data[i].attributes.genres,
         synopsis: data[i].attributes.synopsis,
-        rating: data[i].attributes.averageRating,
+        rating: data[i].attributes.averageRating/10,
         status: data[i].attributes.status,
-        startDate: data[i].attributes.startDate,
-        endDate: data[i].attributes.endDate,
         episodeCount: data[i].attributes.episodeCount,
       };
       animelist.push(anime);
     }
-    res.render("index.ejs", { data: animelist, mal: list[random], limit: DISP_LIMIT });
-    // console.log(animelist);
-    // console.log(list[random]);
+    res.render("index.ejs", { data: animelist, mal: list[random], limit: DISP_LIMIT, err:null });
+    console.log(animelist);
+    console.log(list[random]);
     list = [];
   } else {
-    res.render("index.ejs", { data: null });
+    res.render("index.ejs", { data: null, err:null });
   }
 });
 
-app.post("/search", async (req, res) => {
+app.post("/", async (req, res) => {
   console.log(req.body);
   const username = req.body.mal;
   const url = MAL_URL + "users/" + username + MAL_PTW_EXT;
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
     console.log(err.toJSON());
-    res.redirect("/");
+    res.render("index.ejs", {data: null, err: err.toJSON()});
   });
   if (response) {
     const data = response.data.data;
     for (var i = 0; i < data.length; i++) {
       list.push(data[i].node);
     }
-    // console.log(list);
+    console.log(list);
     res.redirect("/");
   }
 });

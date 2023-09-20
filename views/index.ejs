@@ -2,26 +2,47 @@
 
 <div>
   <h1>Enter Your MyAnimeList Profile:</h1>
-  <form action="/search" method="post">
+  <form action="/" method="post">
     <input type="text" name="mal" placeholder="MyAnimeList Profile" required />
     <button type="submit">Search</button>
   </form>
 </div>
-<% if(data!=null) {%>
-<h1>Random Anime from Your Plan To Watch List:</h1>
-<% for (var i = 0; i < limit; i++) { %>
-<div class="anime-content">
-  <div class="anime-info">
-    <div class="anime-cover">
-      <a href="https://myanimelist.net/anime/<%= mal.id %>" target="_blank"><img border="0" src="<%= data[i].poster %>" alt="<%= mal.title %>"></a>
-    </div>
-    <div class="anime-details">
-      <strong>Name:</strong> <%= data[i].title %><br>
-      <!-- <strong>Genre:</strong><%= data[i].genre %><br /> -->
-      <strong>Rating:</strong> <%= data[i].rating %><br>
-      <strong>Episodes:</strong> <%= data[i].episodeCount %><br>
-      <strong>Synopsis:</strong> <%= data[i].synopsis %><br>
-    </div>
-    <% } %> <% } %> <%- include("footer.ejs") %>
-  </div>
+<% if(err!=null) { %>
+<% if(err.status===403){ %>
+  <h1 style="color: red;">Error: animelist not public</h1>
+<% } %>
 </div>
+<% if(err.status===404){ %>
+  <h1 style="color: red;">Error: username not found or invalid username</h1>
+<% } %>
+</div>
+<% if(err.status>=500){ %>
+  <h1 style="color: red;">Error: myanimelist server is down</h1>
+<% } %>
+</div>
+<% if(err.status==null){ %>
+  <h1 style="color: red;">Error: this server is down</h1>
+  <h1 style="color: red;">Check if this server has proper internet connection</h1>
+<% } %>
+<% } %>
+  <% if(data!=null) {%>
+  <h1>Random Anime from Your Plan To Watch List:</h1>
+  <% for (var i = 0; i < limit; i++) { %>
+  <div class="anime-content">
+    <div class="anime-info">
+      <div class="anime-cover">
+        <a href="https://myanimelist.net/anime/<%= mal.id %>" target="_blank"
+          ><img border="0" src="<%= data[i].poster %>" alt="<%= mal.title %>"
+        /></a>
+      </div>
+      <div class="anime-details">
+        <strong>Name:</strong> <%= data[i].title %><br />
+        <strong>Rating:</strong> <%= data[i].rating %><br />
+        <strong>Episodes:</strong> <%= data[i].episodeCount %><br />
+        <strong>Status:</strong> <%= data[i].status %><br />
+        <strong>Synopsis:</strong> <%= data[i].synopsis %><br />
+      </div>
+    </div>
+  </div>
+<% } %> <% } %> 
+<%- include("footer.ejs") %>
