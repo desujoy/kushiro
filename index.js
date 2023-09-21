@@ -47,8 +47,8 @@ app.get("/", async (req, res) => {
       animelist.push(anime);
     }
     res.render("index.ejs", { data: animelist, mal: list[random], limit: DISP_LIMIT, err:null });
-    console.log(animelist);
-    console.log(list[random]);
+    // console.log(animelist);
+    // console.log(list[random]);
     list = [];
   } else {
     res.render("index.ejs", { data: null, err:null });
@@ -60,7 +60,7 @@ app.post("/", async (req, res) => {
   const username = req.body.mal;
   const url = MAL_URL + "users/" + username + MAL_PTW_EXT;
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
-    console.log(err.toJSON());
+    console.log(err.toJSON().status + " " + err.toJSON().code);
     res.render("index.ejs", {data: null, err: err.toJSON()});
   });
   if (response) {
@@ -68,7 +68,7 @@ app.post("/", async (req, res) => {
     for (var i = 0; i < data.length; i++) {
       list.push(data[i].node);
     }
-    console.log(list);
+    // console.log(list);
     res.redirect("/");
   }
 });
