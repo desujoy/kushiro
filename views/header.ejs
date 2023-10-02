@@ -1,43 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kushiro</title>
     <style>
-        *{
-            box-sizing:border-box;
-            }
-            
-            body{
-                margin:0;
-            }
-            img{
-                max-width:100%;
-             height:auto;
-                display:block;
-             
-            }
-            .anime-content{
-                max-width:600px;
-                margin:0 auto;
-                display:grid;
-                grid-gap:1em;
-            }
-            .anime-info{
-                display:grid;
-                grid-template-columns: repeat(5, 1fr);
-                grid-gap:1rem;
-            }
-            
-            .anime-cover{
-                grid-column:1 / span 2;
-            }
-            .anime-details{
-                grid-column:3 /  span 3;
-            }
-            
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        font-family: "Lobster", cursive;
+        background: #eff1f5;
+      }
+
+      .wrap {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .search form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin: 10px 22%;
+      }
+
+      .searchTerm {
+        width: 80%;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #657789;
+      }
+
+      .searchButton {
+        width: 20%;
+        height: 47.5px;
+        border: 1px solid #ccc;
+        border-radius: 0 5px 5px 0;
+        background: #2e51a2;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .searchButton svg {
+        vertical-align: middle;
+      }
+
+      .searchButton svg circle {
+        fill: #2e51a2;
+      }
+
+      .anime-content {
+        width: 80%;
+        margin: 20px auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: "VT323", monospace;
+        font-size: 20px;
+      }
+
+      .anime-info {
+        display: flex;
+        align-items: center;
+      }
+
+      .anime-cover img {
+        max-width: 300px;
+        height: auto;
+        margin-right: 10px;
+      }
+
+      .anime-details {
+        flex: 1;
+        padding-left: 100px;
+        margin-right: 100px;
+      }
+
+      .anime-details strong {
+        display: block;
+        margin-bottom: 5px;
+        padding-top: 4px;
+      }
+
+      .error-message {
+        color: red;
+      }
     </style>
-</head>
-<body>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body></body>
+</html>
