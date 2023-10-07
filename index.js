@@ -3,7 +3,7 @@ import axios from "axios";
 import helmet from "helmet";
 import "dotenv/config";
 
-if(process.env.MAL_CLIENT_ID == undefined || process.env.MAL_LIMIT == undefined){
+if(process.env.MAL_CLIENT_ID == undefined){
   console.log("Please set the environment variables");
   process.exit(1);
 }
@@ -12,7 +12,6 @@ const app = express();
 const port = 3000;
 const DISP_LIMIT = 1;
 
-// app.use('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet.hidePoweredBy());
@@ -21,7 +20,7 @@ var list = [];
 const MAL_URL = "https://api.myanimelist.net/v2/";
 const MAL_LIMIT = process.env.MAL_LIMIT || 1000;
 const MAL_PTW_EXT = `/animelist?status=plan_to_watch&limit=${MAL_LIMIT}`;
-const MAL_FIELDS="?fields=id,title,main_picture,alternative_titles,start_date,end_date,synopsis,mean,rank,popularity,num_list_users,num_scoring_users,nsfw,created_at,updated_at,media_type,status,genres,my_list_status,num_episodes,start_season,broadcast,source,average_episode_duration,rating,pictures,background"
+const MAL_FIELDS="?fields=id,title,main_picture,synopsis,mean,status,genres"
 const MAL_HEADER = {
   headers: {
     "X-MAL-CLIENT-ID": process.env.MAL_CLIENT_ID,
@@ -32,7 +31,6 @@ app.get("/", async (req, res) => {
   if (list.length != 0) {
     const random = Math.floor(Math.random() * list.length);
     const response = await axios.get(MAL_URL + 'anime/' + list[random].id + MAL_FIELDS, MAL_HEADER);
-    // console.log(response)rs
     const data = response.data;
     console.log(data);
     const anime = {
@@ -44,10 +42,7 @@ app.get("/", async (req, res) => {
       status: data.status,
       episodeCount: data.num_episodes,
     };
-    console.log(anime);
     res.render("index.ejs", { data: anime, mal: list[random], limit: DISP_LIMIT, err:null });
-    // console.log(animelist);
-    console.log(list[random]);
     list = [];
   } else {
     res.render("index.ejs", { data: null, err:null });
@@ -67,7 +62,6 @@ app.post("/", async (req, res) => {
     for (var i = 0; i < data.length; i++) {
       list.push(data[i].node);
     }
-    // console.log(list);
     res.redirect("/");
   }
 });
