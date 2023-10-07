@@ -32,11 +32,11 @@ app.get("/", async (req, res) => {
     const random = Math.floor(Math.random() * list.length);
     const response = await axios.get(MAL_URL + 'anime/' + list[random].id + MAL_FIELDS, MAL_HEADER);
     const data = response.data;
-    console.log(data);
+    const genres = data.genres.map((genre) => genre.name);
     const anime = {
       title: data.title,
       poster: data.main_picture.large,
-      genre: data.genres[0].name,
+      genre: genres,
       synopsis: data.synopsis,
       rating: data.mean,
       status: data.status,
