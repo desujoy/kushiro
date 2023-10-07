@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MAL_CLIENT_ID="ddbeae36ec9447e15aed8d2c11a9eb06" # required
+      - MAL_LIMIT=1000 # optional

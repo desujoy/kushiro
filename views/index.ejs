@@ -37,22 +37,21 @@
 <% } %>
   <% if(data!=null) {%>
   <h1>Random Anime from Your Plan To Watch List:</h1>
-  <% for (var i = 0; i < limit; i++) { %>
   <div class="anime-content">
     <div class="anime-info">
       <div class="anime-cover">
         <a href="https://myanimelist.net/anime/<%= mal.id %>" target="_blank"
-          ><img border="0" src="<%= data[i].poster %>" alt="<%= mal.title %>"
+          ><img border="0" src="<%= data.poster %>" alt="<%= mal.title %>"
         /></a>
       </div>
       <div class="anime-details">
-        <strong>Name:</strong> <%= data[i].title %><br />
-        <strong>Rating:</strong> <%= data[i].rating %><br />
-        <strong>Episodes:</strong> <%= data[i].episodeCount %><br />
-        <strong>Status:</strong> <%= data[i].status %><br />
-        <strong>Synopsis:</strong> <%= data[i].synopsis %><br />
+        <strong>Name:</strong> <%= data.title %><br />
+        <strong>Rating:</strong> <%= data.rating %><br />
+        <strong>Episodes:</strong> <%= data.episodeCount %><br />
+        <strong>Status:</strong> <%= data.status %><br />
+        <strong>Synopsis:</strong> <%= data.synopsis %><br />
       </div>
     </div>
   </div>
-<% } %> <% } %> 
+<% } %> 
 <%- include("footer.ejs") %>
