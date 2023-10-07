@@ -20,7 +20,7 @@ var list = [];
 const MAL_URL = "https://api.myanimelist.net/v2/";
 const MAL_LIMIT = process.env.MAL_LIMIT || 1000;
 const MAL_PTW_EXT = `/animelist?status=plan_to_watch&limit=${MAL_LIMIT}`;
-const MAL_FIELDS="?fields=id,title,main_picture,synopsis,mean,status,genres"
+const MAL_FIELDS="?fields=id,title,num_episodes,main_picture,synopsis,mean,status,genres"
 const MAL_HEADER = {
   headers: {
     "X-MAL-CLIENT-ID": process.env.MAL_CLIENT_ID,
