@@ -40,17 +40,17 @@
   <div class="anime-content">
     <div class="anime-info">
       <div class="anime-cover">
-        <a href="https://myanimelist.net/anime/<%= mal.id %>" target="_blank"
-          ><img border="0" src="<%= data.poster %>" alt="<%= mal.title %>"
+        <a href="https://myanimelist.net/anime/<%= data.id %>" target="_blank"
+          ><img border="0" src="<%= data.main_picture.large %>" alt="<%= data.title %>"
         /></a>
       </div>
       <div class="anime-details">
         <strong>Name:</strong> <%= data.title %><br />
-        <strong>Rating:</strong> <%= data.rating %><br />
-        <strong>Genres:</strong> <%= data.genre %><br />
-        <strong>Episodes:</strong> <%= data.episodeCount %><br />
+        <strong>Rating:</strong> <%= data.mean %><br />
+        <strong>Genres:</strong> <%= data.genres.map((genre) => genre.name) %><br />
+        <strong>Episodes:</strong> <%= data.num_episodes %><br />
         <strong>Status:</strong> <%= data.status %><br />
-        <strong>Synopsis:</strong> <%= data.synopsis %><br />
+        <strong>Synopsis:</strong> <div class="synopsis"> <%- data.synopsis.replaceAll('\n\n','<br>') %></div><br />
       </div>
     </div>
   </div>

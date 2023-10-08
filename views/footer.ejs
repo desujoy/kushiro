@@ -1,19 +1,10 @@
-<footer>
-    <% if(data==null) { %>
-        <div class="fixed-copyright-box">
-            <p class="copyright">Copyright &copy; <strong>Sujoy De</strong>. All Rights Reserved</p>
-            <div class="credits">
-                Source <a href="https://github.com/desujoy/desujoy.github.io/" target="_blank">GitHub</a>
-            </div>
-        </div>
-        <% } else { %>
-            <div class="relative-copyright-box">
-                <p class="copyright">Copyright &copy; <strong>Sujoy De</strong>. All Rights Reserved</p>
-                <div class="credits">
-                    Source <a href="https://github.com/desujoy/desujoy.github.io/" target="_blank">GitHub</a>
-                </div>
-            </div>
-            <% } %>
+<footer <% if (data==null) { %> class="fixed-bottom" <% } %>
+    <div class="copyright-box">
+        Copyright &copy; <strong>Sujoy De</strong>. All Rights Reserved<br>
+        Source <a href="https://github.com/desujoy/desujoy.github.io/" target="_blank">GitHub</a>
+
+    </div>
 </footer>
+<script src="js/main.js"></script>
 
 </html>

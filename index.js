@@ -31,18 +31,8 @@ app.get("/", async (req, res) => {
   if (list.length != 0) {
     const random = Math.floor(Math.random() * list.length);
     const response = await axios.get(MAL_URL + 'anime/' + list[random].id + MAL_FIELDS, MAL_HEADER);
-    const data = response.data;
-    const genres = data.genres.map((genre) => genre.name);
-    const anime = {
-      title: data.title,
-      poster: data.main_picture.large,
-      genre: genres,
-      synopsis: data.synopsis,
-      rating: data.mean,
-      status: data.status,
-      episodeCount: data.num_episodes,
-    };
-    res.render("index.ejs", { data: anime, mal: list[random], limit: DISP_LIMIT, err:null });
+    console.log(response.data);
+    res.render("index.ejs", { data: response.data, limit: DISP_LIMIT, err:null });
     list = [];
   } else {
     res.render("index.ejs", { data: null, err:null });
