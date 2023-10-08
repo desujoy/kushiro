@@ -31,7 +31,6 @@ app.get("/", async (req, res) => {
   if (list.length != 0) {
     const random = Math.floor(Math.random() * list.length);
     const response = await axios.get(MAL_URL + 'anime/' + list[random].id + MAL_FIELDS, MAL_HEADER);
-    console.log(response.data);
     res.render("index.ejs", { data: response.data, limit: DISP_LIMIT, err:null });
     list = [];
   } else {
