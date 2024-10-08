@@ -1,5 +1,7 @@
 body {
-  font-family: "Lobster", cursive;
+  font-family: "Protest Strike", sans-serif;
+  font-weight: 200;
+  font-style: normal;
   margin: 0;
   padding: 0;
   background: #eff1f5;
@@ -109,7 +111,10 @@ img {
 }
 
 .copyright-box {
-  font-family: cursive;
+  font-family: "Qwitcher Grypen", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: x-large;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -117,11 +122,15 @@ img {
   margin-bottom: 2%;
 }
 
-.fixed-bottom {  
+.fixed-bottom {
   font-family: cursive;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+
+.copyright-box > a {
+  text-decoration: none;
 }
