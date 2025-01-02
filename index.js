@@ -2,6 +2,7 @@ import express from "express";
 import axios from "axios";
 import helmet from "helmet";
 import "dotenv/config";
+import cron from "node-cron";
 
 if(process.env.MAL_CLIENT_ID == undefined){
   console.log("Please set the environment variables");
@@ -54,6 +55,16 @@ app.post("/", async (req, res) => {
     res.redirect("/");
   }
 });
+
+cron.schedule('*/5 * * * *', async () => {
+  try {
+    await axios.get('https://kushiro.onrender.com/');
+    console.log("I am healthy");
+  } catch (error) {
+    console.error("Error in cron job:", error);
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Server started at port ${port}`);
