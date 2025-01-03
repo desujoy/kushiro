@@ -57,13 +57,16 @@ app.post("/", async (req, res) => {
 });
 
 cron.schedule('*/5 * * * *', async () => {
+  const url = process.env.PUBLIC_URL || `http://localhost:${port}`;
   try {
-    await axios.get('https://kushiro.onrender.com/');
-    console.log("I am healthy");
+    const response = await fetch(`${url}/healthcheck`);
+    const data = await response.json();
+    console.log(data);
   } catch (error) {
-    console.error("Error in cron job:", error);
+    console.error(error);
   }
 });
+
 
 
 app.listen(port, () => {
