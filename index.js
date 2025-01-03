@@ -3,6 +3,7 @@ import axios from "axios";
 import helmet from "helmet";
 import "dotenv/config";
 import cron from "node-cron";
+import fetch from "node-fetch";
 
 if(process.env.MAL_CLIENT_ID == undefined){
   console.log("Please set the environment variables");
