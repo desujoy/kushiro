@@ -56,6 +56,10 @@ app.post("/", async (req, res) => {
   }
 });
 
+app.get("/healthcheck", (req, res) => {
+  res.json({ message: "I am healthy" });
+});
+
 cron.schedule('*/5 * * * *', async () => {
   const url = process.env.PUBLIC_URL || `http://localhost:${port}`;
   try {
