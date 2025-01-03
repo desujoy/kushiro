@@ -2,6 +2,7 @@ import express from "express";
 import axios from "axios";
 import helmet from "helmet";
 import "dotenv/config";
+import cron from "node-cron";
 
 if(process.env.MAL_CLIENT_ID == undefined){
   console.log("Please set the environment variables");
@@ -54,6 +55,23 @@ app.post("/", async (req, res) => {
     res.redirect("/");
   }
 });
+
+app.get("/healthcheck", (req, res) => {
+  res.json({ message: "I am healthy" });
+});
+
+cron.schedule('*/5 * * * *', async () => {
+  const url = process.env.PUBLIC_URL || `http://localhost:${port}`;
+  try {
+    const response = await fetch(`${url}/healthcheck`);
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
 
 app.listen(port, () => {
   console.log(`Server started at port ${port}`);
