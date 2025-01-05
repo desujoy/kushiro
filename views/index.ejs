@@ -1,12 +1,6 @@
 <%- include("header.ejs") %>
 <body>
 <div class="wrap">
-  
-  <h2 class="tagline">Streamline Your Anime Journey</h2>
-  <p class="description">
-    Our platform is designed for anime enthusiasts to rediscover their plan to watch list. By randomly selecting a series from the list, we help you overcome decision fatigue and explore titles you might have forgotten, encouraging a fresh and engaging anime-watching experience.
-  </p>
-   
   <h1>Enter Your MyAnimeList Profile:</h1>
   <div class="search">
     <form action="/" method="post">
@@ -22,44 +16,42 @@
       </button>
     </form>
   </div>
-</div>
-<% if(err!=null) { %>
-<% if(err.status===403){ %>
-  <h1 style="color: red;">Error: animelist not public</h1>
-<% } %>
-</div>
-<% if(err.status===404){ %>
-  <h1 style="color: red;">Error: username not found or invalid username</h1>
-<% } %>
-</div>
-<% if(err.status>=500){ %>
-  <h1 style="color: red;">Error: myanimelist server is down</h1>
-<% } %>
-</div>
-<% if(err.status==null){ %>
-  <h1 style="color: red;">Error: this server is down</h1>
-  <h1 style="color: red;">Check if this server has proper internet connection</h1>
-<% } %>
-<% } %>
+
+  <% if(err!=null) { %>
+    <% if(err.status===403){ %>
+      <h1 style="color: red;">Error: animelist not public</h1>
+    <% } %>
+    <% if(err.status===404){ %>
+      <h1 style="color: red;">Error: username not found or invalid username</h1>
+    <% } %>
+    <% if(err.status>=500){ %>
+      <h1 style="color: red;">Error: myanimelist server is down</h1>
+    <% } %>
+    <% if(err.status==null){ %>
+      <h1 style="color: red;">Error: this server is down</h1>
+      <h1 style="color: red;">Check if this server has proper internet connection</h1>
+    <% } %>
+  <% } %>
   <% if(data!=null) {%>
-  <h1>Random Anime from Your Plan To Watch List:</h1>
-  <div class="anime-content">
-    <div class="anime-info">
-      <div class="anime-cover">
-        <a href="https://myanimelist.net/anime/<%= data.id %>" target="_blank"
-          ><img border="0" src="<%= data.main_picture.large %>" alt="<%= data.title %>"
-        /></a>
-      </div>
-      <div class="anime-details">
-        <strong>Name:</strong> <%= data.title %><br />
-        <strong>Rating:</strong> <%= data.mean %><br />
-        <strong>Genres:</strong> <%= data.genres.map((genre) => ' '+genre.name) %><br />
-        <strong>Episodes:</strong> <%= data.num_episodes %><br />
-        <strong>Status:</strong> <%= data.status %><br />
-        <strong>Synopsis:</strong> <div class="synopsis"> <%- data.synopsis.replace(/\n\n/g,'<br>') %></div><br />
+    <h1>Random Anime from Your Plan To Watch List:</h1>
+    <div class="anime-content">
+      <div class="anime-info">
+        <div class="anime-cover">
+          <a href="https://myanimelist.net/anime/<%= data.id %>" target="_blank"
+            ><img border="0" src="<%= data.main_picture.large %>" alt="<%= data.title %>"
+          /></a>
+        </div>
+        <div class="anime-details">
+          <strong>Name:</strong> <%= data.title %><br />
+          <strong>Rating:</strong> <%= data.mean %><br />
+          <strong>Genres:</strong> <%= data.genres.map((genre) => ' '+genre.name) %><br />
+          <strong>Episodes:</strong> <%= data.num_episodes %><br />
+          <strong>Status:</strong> <%= data.status %><br />
+          <strong>Synopsis:</strong> <div class="synopsis"> <%- data.synopsis.replace(/\n\n/g,'<br>') %></div><br />
+        </div>
       </div>
     </div>
-  </div>
-<% } %> 
+  <% } %>
+</div>
 <%- include("footer.ejs") %>
 </body>
