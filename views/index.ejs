@@ -2,6 +2,12 @@
 <body>
 <div class="wrap">
   <h1>Enter Your MyAnimeList Profile:</h1>
+  <h2 class="tagline">Streamline Your Anime Journey</h2>
+  <% if (!data) { %>
+    <p class="description">
+      Our platform is designed for anime enthusiasts to rediscover their <strong>"Plan to Watch"</strong> list. By randomly selecting a series from the list, we help you overcome decision fatigue and explore titles you might have forgotten, encouraging a fresh and engaging anime-watching experience.
+    </p>
+  <% } %>
   <div class="search">
     <form action="/" method="post">
       <input

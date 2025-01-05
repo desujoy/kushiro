@@ -1,20 +1,21 @@
 :root {
-  --background-color: #f5f5f5; 
-  --text-color: #333; 
-  --header-background-color: #ffebcd;
-  --header-text-color: #333; 
-  --border-color: #3498db;
-  --border-focus-color: #2980b9; 
-  --button-background-color: #3498db;
-  --button-hover-background-color: #2980b9; 
-  --button-icon-color: #fff; 
-  --h1-color: #3498db; 
-  --anime-content-background-color: #ffebcd; 
-  --error-color: red; 
-  --footer-background-color: #ffebcd;
-  --footer-text-color: #333; 
-  --footer-link-color: #3498db; 
-  --footer-link-hover-color: #2980b9;}
+  --background-color: #f5f5f5; /* Light grey background */
+  --text-color: #333; /* Dark text color */
+  --header-background-color: #ffebcd; /* BlanchedAlmond */
+  --header-text-color: #333; /* Dark color */
+  --border-color: #3498db; /* Blue border */
+  --border-focus-color: #2980b9; /* Darker blue border on focus */
+  --button-background-color: #3498db; /* Blue background */
+  --button-hover-background-color: #2980b9; /* Darker blue background on hover */
+  --button-icon-color: #fff; /* White color for the search icon */
+  --h1-color: #3498db; /* Blue color */
+  --anime-content-background-color: #ffebcd; /* BlanchedAlmond */
+  --error-color: red; /* Error color */
+  --footer-background-color: #ffebcd; /* BlanchedAlmond */
+  --footer-text-color: #333; /* Dark color */
+  --footer-link-color: #3498db; /* Blue color for links */
+  --footer-link-hover-color: #2980b9; /* Darker blue color for links on hover */
+}
 
 body {
   font-family: "Arial", sans-serif;
@@ -35,7 +36,7 @@ body {
 
 .header h1 {
   margin: 0;
-  font-family: 'Arial', sans-serif; 
+  font-family: 'Arial', sans-serif; /* Professional font */
   font-size: 2.5em;
   color: var(--header-text-color);
   font-weight: bold;
@@ -61,7 +62,7 @@ body {
   font-family: 'Arial', sans-serif;
   font-size: 1.2em;
   color: var(--text-color);
-  background-color: #fff; 
+  background-color: #fff; /* White background */
   transition: all 0.3s ease;
 }
 
@@ -101,7 +102,7 @@ h1 {
   font-weight: bold;
   color: var(--h1-color);
   margin-top: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
 .description {
@@ -109,10 +110,10 @@ h1 {
   font-size: 1em;
   color: var(--text-color);
   margin-top: 10px;
-  max-width: 900px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.6; 
+  line-height: 1.6; /* Improve readability */
 }
 
 .anime-content {
@@ -126,8 +127,8 @@ h1 {
 }
 
 .anime-content:hover {
-  transform: scale(1.02); 
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  transform: scale(1.02); /* Slightly enlarge on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add deeper shadow on hover */
 }
 
 .anime-info {
@@ -142,8 +143,8 @@ h1 {
 }
 
 .anime-cover img:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
 .anime-details {
@@ -152,11 +153,10 @@ h1 {
 }
 
 .synopsis {
-  max-height: 100px;
-  overflow-y: auto;
   font-family: 'Arial', sans-serif;
   font-size: 1em;
   color: var(--text-color);
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
 }
 
 .error {
@@ -166,15 +166,15 @@ h1 {
 
 .copyright-box {
   background-color: var(--footer-background-color);
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif; 
+  font-family: 'Arial', sans-serif; /* Professional font */
   color: var(--footer-text-color);
-  font-weight: bold; 
-  position: fixed; 
-  bottom: 0; 
-  width: 100%; 
+  font-weight: bold; /* Bold text */
+  position: fixed; /* Fixed position */
+  bottom: 0; /* Stick to the bottom */
+  width: 100%; /* Full width */
 }
 
 copyright-box a {
