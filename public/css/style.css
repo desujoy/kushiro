@@ -131,6 +131,101 @@ img {
   text-align: center;
 }
 
-.copyright-box > a {
+.copyright-box>a {
   text-decoration: none;
+}
+
+/* INFO: 404 Page Styles */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.go-back {
+  width: auto;
+  padding: 10px 20px;
+  background: #2e51a2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.go-back:hover {
+  background: #1d3a8f;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-20px);
+  }
+
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animated-404 {
+  font-size: 100px;
+  font-weight: bold;
+  color: #2e51a2;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.animated-404 span {
+  animation: bounce 2s infinite, fadeIn 1s ease-in-out;
+  display: inline-block;
+}
+
+.animated-404 span:nth-child(1) {
+  animation-delay: 0s, 0s;
+}
+
+.animated-404 span:nth-child(2) {
+  animation-delay: 0.2s, 0.2s;
+}
+
+.animated-404 span:nth-child(3) {
+  animation-delay: 0.4s, 0.4s;
+}
+
+@media screen and (max-width: 400px) {
+  .animated-404 {
+    font-size: 80px;
+  }
+
+  .not-found-container h1,
+  .not-found-container p {
+    font-size: 20px;
+    text-align: center;
+  }
 }
