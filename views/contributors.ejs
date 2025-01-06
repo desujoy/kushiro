@@ -5,15 +5,33 @@
     <p>Meet the amazing contributors to this project!</p>
     <div class="bento-grid">
       <% data.forEach((contributor, index) => { %>
-        <div class="bento-card" style="animation-delay: <%= (index || 0) * 100 %>ms;">
-          <a href="<%= contributor.html_url %>" target="_blank" rel="noopener noreferrer">
-            <img src="<%= contributor.avatar_url %>" alt="<%= contributor.login %>" />
+      <a
+        href="<%= contributor.html_url %>"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div
+          class="bento-card"
+          style="animation-delay: <%= (index || 0) * 100 %>ms"
+        >
+          <a
+            href="<%= contributor.html_url %>"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="<%= contributor.avatar_url %>"
+              alt="<%= contributor.login %>"
+            />
           </a>
           <div class="bento-details">
             <h3><%= contributor.login %></h3>
-            <p>Contributions: <strong><%= contributor.contributions %></strong></p>
+            <p>
+              Contributions: <strong><%= contributor.contributions %></strong>
+            </p>
           </div>
         </div>
+      </a>
       <% }); %>
     </div>
   </div>

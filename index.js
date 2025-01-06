@@ -42,7 +42,7 @@ app.get("/", async (req, res) => {
     const random = Math.floor(Math.random() * list.length);
     const response = await axios.get(
       MAL_URL + "anime/" + list[random].id + MAL_FIELDS,
-      MAL_HEADER
+      MAL_HEADER,
     );
     res.render("index.ejs", {
       data: response.data,
@@ -76,7 +76,7 @@ app.get("/contributors", async (req, res) => {
   try {
     const { data } = await axios.get(
       GITHUB_CONTRIBUTIONS_URL,
-      GITHUB_AUTH_HEADER
+      GITHUB_AUTH_HEADER,
     );
     res.render("contributors.ejs", { data: data });
   } catch (error) {
