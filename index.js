@@ -31,6 +31,11 @@ const MAL_HEADER = {
 };
 
 const GITHUB_CONTRIBUTIONS_URL = process.env.GITHUB_CONTRIBUTIONS_URL;
+const GITHUB_AUTH_HEADER = {
+  headers: {
+    Authorization: `token  ${process.env.GITHUB_TOKEN}`,
+  },
+};
 
 app.get("/", async (req, res) => {
   if (list.length != 0) {
@@ -55,7 +60,7 @@ app.post("/", async (req, res) => {
   const username = req.body.mal;
   const url = MAL_URL + "users/" + username + MAL_PTW_EXT;
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
-    console.log(err.toJSON().status + " " + err.toJSON().code);
+    console.log(err.status + " " + err.response.data.message);
     res.render("index.ejs", { data: null, err: err.toJSON() });
   });
   if (response) {
@@ -69,10 +74,13 @@ app.post("/", async (req, res) => {
 
 app.get("/contributors", async (req, res) => {
   try {
-    const { data } = await axios.get(GITHUB_CONTRIBUTIONS_URL);
+    const { data } = await axios.get(
+      GITHUB_CONTRIBUTIONS_URL,
+      GITHUB_AUTH_HEADER
+    );
     res.render("contributors.ejs", { data: data });
   } catch (error) {
-    console.error(error);
+    console.log(error.status + " " + error.response.data.message);
     return res.render("404.ejs", { data: null });
   }
 });
