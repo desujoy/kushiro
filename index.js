@@ -57,6 +57,17 @@ app.post("/", async (req, res) => {
   }
 });
 
+app.get("/contributors", async(req, res ) => {
+  let url = 'https://api.github.com/repos/desujoy/kushiro/contributors'
+  try {
+    const { data } = await axios.get(url);
+    res.render("contributors.ejs", { data: data });
+  } catch (error) {
+    console.error(error);
+    return res.json({ error: error.message }); 
+  }
+})
+
 app.get("/healthcheck", (req, res) => {
   res.json({ message: "I am healthy" });
 });
