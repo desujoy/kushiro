@@ -5,7 +5,7 @@ import "dotenv/config";
 import cron from "node-cron";
 import fetch from "node-fetch";
 
-if(process.env.MAL_CLIENT_ID == undefined){
+if (process.env.MAL_CLIENT_ID == undefined) {
   console.log("Please set the environment variables");
   process.exit(1);
 }
@@ -22,21 +22,31 @@ var list = [];
 const MAL_URL = "https://api.myanimelist.net/v2/";
 const MAL_LIMIT = process.env.MAL_LIMIT || 1000;
 const MAL_PTW_EXT = `/animelist?status=plan_to_watch&limit=${MAL_LIMIT}`;
-const MAL_FIELDS="?fields=id,title,num_episodes,main_picture,synopsis,mean,status,genres"
+const MAL_FIELDS =
+  "?fields=id,title,num_episodes,main_picture,synopsis,mean,status,genres";
 const MAL_HEADER = {
   headers: {
     "X-MAL-CLIENT-ID": process.env.MAL_CLIENT_ID,
   },
 };
 
+const GITHUB_CONTRIBUTIONS_URL = process.env.GITHUB_CONTRIBUTIONS_URL;
+
 app.get("/", async (req, res) => {
   if (list.length != 0) {
     const random = Math.floor(Math.random() * list.length);
-    const response = await axios.get(MAL_URL + 'anime/' + list[random].id + MAL_FIELDS, MAL_HEADER);
-    res.render("index.ejs", { data: response.data, limit: DISP_LIMIT, err:null });
+    const response = await axios.get(
+      MAL_URL + "anime/" + list[random].id + MAL_FIELDS,
+      MAL_HEADER
+    );
+    res.render("index.ejs", {
+      data: response.data,
+      limit: DISP_LIMIT,
+      err: null,
+    });
     list = [];
   } else {
-    res.render("index.ejs", { data: null, err:null });
+    res.render("index.ejs", { data: null, err: null });
   }
 });
 
@@ -46,7 +56,7 @@ app.post("/", async (req, res) => {
   const url = MAL_URL + "users/" + username + MAL_PTW_EXT;
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
     console.log(err.toJSON().status + " " + err.toJSON().code);
-    res.render("index.ejs", {data: null, err: err.toJSON()});
+    res.render("index.ejs", { data: null, err: err.toJSON() });
   });
   if (response) {
     const data = response.data.data;
@@ -57,22 +67,21 @@ app.post("/", async (req, res) => {
   }
 });
 
-app.get("/contributors", async(req, res ) => {
-  let url = 'https://api.github.com/repos/desujoy/kushiro/contributors'
+app.get("/contributors", async (req, res) => {
   try {
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(GITHUB_CONTRIBUTIONS_URL);
     res.render("contributors.ejs", { data: data });
   } catch (error) {
     console.error(error);
-    return res.json({ error: error.message }); 
+    return res.render("404.ejs", { data: null });
   }
-})
+});
 
 app.get("/healthcheck", (req, res) => {
   res.json({ message: "I am healthy" });
 });
 
-cron.schedule('*/5 * * * *', async () => {
+cron.schedule("*/5 * * * *", async () => {
   const url = process.env.PUBLIC_URL || `http://localhost:${port}`;
   try {
     const response = await fetch(`${url}/healthcheck`);
@@ -85,7 +94,7 @@ cron.schedule('*/5 * * * *', async () => {
 
 // For Handling 404
 app.use((req, res) => {
-  res.status(404).render("404.ejs", { data : null });
+  res.status(404).render("404.ejs", { data: null });
 });
 
 app.listen(port, () => {
