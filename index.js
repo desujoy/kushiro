@@ -72,7 +72,10 @@ cron.schedule('*/5 * * * *', async () => {
   }
 });
 
-
+// For Handling 404
+app.use((req, res) => {
+  res.status(404).render("404.ejs", { data : null });
+});
 
 app.listen(port, () => {
   console.log(`Server started at port ${port}`);
