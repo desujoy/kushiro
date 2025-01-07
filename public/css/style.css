@@ -329,3 +329,59 @@ img {
     transform: scale(1);
   }
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #2e51a2;
+}
+
+nav .logo img {
+  height: 70px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column-reverse;
+  padding: 1px;
+  background-color: #7a93ce;
+}
+
+.footer-content .social-icons a {
+  margin: 1px;
+}
+.footer-content .social-icons img {
+  height: 40px; 
+  width: 40px; 
+  object-fit: contain; 
+  margin: 5px; 
+  border: 2px solid transparent; 
+}
+
+.footer-content .copyright-box {
+  text-align: center;
+}
