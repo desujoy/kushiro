@@ -407,21 +407,27 @@ nav ul li a:hover {
   nav .hamburger {
     display: flex;
   }
+  .footer-content .social-icons {
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+  }
 }
 
 
 @media (min-width: 769px) {
   .footer-content .social-icons {
+    position: absolute;
     bottom: 1rem;
     right: 1rem;
   }
 }
 .footer-content {
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 1px;
+  /* padding: 1px; */
   background-color: #7a93ce;
 }
 .footer-content .social-icons {
