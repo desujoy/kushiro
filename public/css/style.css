@@ -407,45 +407,68 @@ nav ul li a:hover {
   nav .hamburger {
     display: flex;
   }
-  .footer-content .social-icons {
-    position: relative;
-    margin: 0 auto;
-    justify-content: center;
-  }
+
 }
 
 
-@media (min-width: 769px) {
-  .footer-content .social-icons {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-  }
+footer {
+  width: 100%;
+  background-color: #2e51a2;
+  color: white;
+  padding: 10px 0;
 }
+
 .footer-content {
-  flex-direction: column;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end; /* Align items for desktop */
   align-items: center;
-  /* padding: 1px; */
-  background-color: #7a93ce;
+  flex-wrap: wrap; /* Ensure proper wrapping for mobile */
+  padding: 0 20px;
 }
-.footer-content .social-icons {
+
+.social-icons {
   display: flex;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
-.footer-content .social-icons a {
-  margin: 1px;
-}
-.footer-content .social-icons img {
-  height: 40px; 
-  width: 40px; 
-  object-fit: contain; 
-  margin: 5px; 
-  border: 2px solid transparent; 
+.social-icons img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  transition: transform 0.3s;
 }
 
-.footer-content .copyright-box {
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.copyright-box {
   text-align: center;
+  flex-grow: 1;
+}
+
+.copyright-box a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.copyright-box a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack items vertically */
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center; /* Center align icons */
+    margin-bottom: 10px;
+  }
+
+  .copyright-box {
+    text-align: center;
+  }
 }
