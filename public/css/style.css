@@ -124,14 +124,24 @@ img {
 
 .fixed-bottom {
   font-family: cursive;
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
 }
 
-.copyright-box>a {
+@media screen and (min-width: 1120px) {
+  .fixed-bottom {
+    font-family: cursive;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.copyright-box > a {
   text-decoration: none;
 }
 
@@ -141,7 +151,7 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding-top: 50px;
 }
 
 .go-back {
@@ -160,7 +170,6 @@ img {
 }
 
 @keyframes bounce {
-
   0%,
   20%,
   50%,
@@ -373,6 +382,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 1rem;
+  padding-bottom: 10px;
 }
 
 nav ul li {
@@ -407,9 +417,7 @@ nav ul li a:hover {
   nav .hamburger {
     display: flex;
   }
-
 }
-
 
 footer {
   width: 100%;
