@@ -329,3 +329,146 @@ img {
     transform: scale(1);
   }
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  background-color: #2e51a2;
+  position: relative;
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+}
+
+nav .logo-text {
+  margin-left: 10px;
+  color: rgb(216, 203, 203);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+nav .logo img {
+  height: 70px;
+}
+
+nav .hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+nav .hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px;
+  border-radius: 5px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #2e51a2;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav .hamburger {
+    display: flex;
+  }
+
+}
+
+
+footer {
+  width: 100%;
+  background-color: #2e51a2;
+  color: white;
+  padding: 10px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: flex-end; /* Align items for desktop */
+  align-items: center;
+  flex-wrap: wrap; /* Ensure proper wrapping for mobile */
+  padding: 0 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.copyright-box {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.copyright-box a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.copyright-box a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack items vertically */
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center; /* Center align icons */
+    margin-bottom: 10px;
+  }
+
+  .copyright-box {
+    text-align: center;
+  }
+}
