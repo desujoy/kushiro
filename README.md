@@ -99,6 +99,12 @@ If you encounter any issues or have questions, feel free to open an issue on the
 
 ---
 
+## Project Contributers: 
+<a href="https://github.com/desujoy/kushiro/graphs/contributors">
+<img src="https://contributors-img.web.app/image?repo=desujoy/kushiro"/>
+
+---
+
 ## 🎉 Happy Watching!
 Let **Kushiro** guide your next anime journey! 🌟
 
