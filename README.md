@@ -56,10 +56,10 @@ Open the application in your browser at:
 ## 📸 Screenshots
 
 ### 🏠 Desktop
-(assets/desktop.png)
+![](public/assets/desktop.png)
 
 ### 🎬 Mobile
-(assets/mobile.png)
+![](public/assets/mobile.png)
 
 ---
 
