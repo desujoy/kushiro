@@ -48,10 +48,10 @@
         <strong>Name:</strong> <%= data.title %><br />
         <strong>Rating:</strong> <%= data.mean %><br />
         <strong>Genres:</strong> <%= data.genres.map((genre) => ' '+genre.name) %><br />
-        <strong>Streaming Links:</strong> 
+        <strong>Streaming Links: (May contain broken links)</strong> 
         <div class="streaming-links">
           <% if (data.mediaLinks.length > 0) { data.mediaLinks.forEach((site) => { %>
-            <a href="<%= site.url %>" style="background-color: <%= site.color %>;" data-color="<%= site.color %>">
+            <a href="<%= site.url %>" style="background-color: <%= site.color %>;" data-color="<%= site.color %>" target="_blank">
               <img src="<%= site.icon %>">
               <span><%= site.site %><span>
             </a>
