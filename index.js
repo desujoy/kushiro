@@ -40,10 +40,35 @@ const GITHUB_AUTH_HEADER = {
 app.get("/", async (req, res) => {
   if (list.length != 0) {
     const random = Math.floor(Math.random() * list.length);
+    const MAL_ANIME_ID = list[random].id;
     const response = await axios.get(
-      MAL_URL + "anime/" + list[random].id + MAL_FIELDS,
+      MAL_URL + "anime/" + MAL_ANIME_ID + MAL_FIELDS,
       MAL_HEADER,
     );
+    const AL_URL = 'https://graphql.anilist.co',
+      AL_QUERY = {
+        query: `query ($MAL_ANIME_ID: Int) {
+          Media(idMal: $MAL_ANIME_ID) {
+            externalLinks {
+              color
+              icon
+              url
+              site
+              type
+            }
+          }
+        }`,
+        variables: {
+          MAL_ANIME_ID: MAL_ANIME_ID
+        },
+      };
+    const AL_response = await axios.post(AL_URL, AL_QUERY, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    });
+    response.data.mediaLinks = AL_response.data.data.Media.externalLinks.filter((site) => site.type == "STREAMING");
     res.render("index.ejs", {
       data: response.data,
       limit: DISP_LIMIT,

@@ -56,10 +56,10 @@ Open the application in your browser at:
 ## 📸 Screenshots
 
 ### 🏠 Desktop
-(assets/desktop.png)
+![](public/assets/desktop.png)
 
 ### 🎬 Mobile
-(assets/mobile.png)
+![](public/assets/mobile.png)
 
 ---
 
@@ -96,6 +96,12 @@ If you encounter any issues or have questions, feel free to open an issue on the
 ## 📖 Additional Notes
 - Ensure your MyAnimeList account has the "Plan to Watch" list populated for the app to function properly.
 - Feel free to customize the UI and add new features to enhance your experience.
+
+---
+
+## Project Contributers: 
+<a href="https://github.com/desujoy/kushiro/graphs/contributors">
+<img src="https://contributors-img.web.app/image?repo=desujoy/kushiro"/>
 
 ---
 
