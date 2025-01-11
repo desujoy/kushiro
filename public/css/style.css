@@ -470,3 +470,34 @@ footer {
     text-align: center;
   }
 }
+
+.streaming-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.streaming-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.5rem;
+  border-radius: 8px;
+  color: white;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+.streaming-links img {
+  border: none;
+  height: 1.2rem;
+}
+.streaming-links span {
+  display: flex;
+}
+.no-streamlinks-msg {
+  display: block;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid red;
+  background-color: #F002;
+  color: #A00;
+  border-radius: 8px;
+}
