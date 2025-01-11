@@ -82,7 +82,6 @@ app.get("/", async (req, res) => {
 app.get("/about", async (req, res) => {
   try {
     res.render('about.ejs',{ data:{page:'about'},err:null});
-    console.log("About page visited");
   } catch (error) {
     res.render("index.ejs", {data:null,err:"Error"})
   } 
