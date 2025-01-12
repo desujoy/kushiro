@@ -34,6 +34,16 @@
         <li><a href="/manga">Manga</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contributors">Contributors</a></li>
+        <li>
+          <div class="dark-theme-switch">
+            <input id="dark-theme-switch-checkbox" onchange="localStorage.setItem('darkThemeStatus',this.checked)" type="checkbox">
+            <script>
+              if ( localStorage.getItem('darkThemeStatus') === "true" ) {
+                document.getElementById('dark-theme-switch-checkbox').checked = true;
+              }
+            </script>
+          </div>
+        </li>
       </ul>
     </nav>
   </body>
