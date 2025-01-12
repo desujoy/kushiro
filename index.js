@@ -79,7 +79,13 @@ app.get("/", async (req, res) => {
     res.render("index.ejs", { data: null, err: null });
   }
 });
-
+app.get("/about", async (req, res) => {
+  try {
+    res.render('about.ejs',{ data:{page:'about'},err:null});
+  } catch (error) {
+    res.render("index.ejs", {data:null,err:"Error"})
+  } 
+});
 app.post("/", async (req, res) => {
   console.log(req.body);
   const username = req.body.mal;
@@ -127,7 +133,7 @@ cron.schedule("*/5 * * * *", async () => {
 
 // For Handling 404
 app.use((req, res) => {
-  res.status(404).render("404.ejs", { data: null });
+  res.status(404).render("404.ejs", { data:null});
 });
 
 app.listen(port, () => {
