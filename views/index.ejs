@@ -1,22 +1,6 @@
 <%- include("header.ejs") %>
 <body>
-<div class="wrap">
-  <h1>Enter Your MyAnimeList Profile:</h1>
-  <div class="search">
-    <form action="/" method="post">
-      <input
-        type="text"
-        name="mal"
-        class="searchTerm" 
-        placeholder="MyAnimeList Profile"
-        required
-      />
-      <button type="submit" class="searchButton">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-    </form>
-  </div>
-</div>
+<%- include("userform.ejs") %>
 <% if(err!=null) { %>
 <% if(err.status===403){ %>
   <h1 style="color: red;">Error: animelist not public</h1>
@@ -35,36 +19,5 @@
   <h1 style="color: red;">Check if this server has proper internet connection</h1>
 <% } %>
 <% } %>
-  <% if(data!=null) {%>
-  <h1>Random Anime from Your Plan To Watch List:</h1>
-  <div class="anime-content">
-    <div class="anime-info">
-      <div class="anime-cover">
-        <a href="https://myanimelist.net/anime/<%= data.id %>" target="_blank"
-          ><img border="0" src="<%= data.main_picture.large %>" alt="<%= data.title %>"
-        /></a>
-      </div>
-      <div class="anime-details">
-        <strong>Name:</strong> <%= data.title %><br />
-        <strong>Rating:</strong> <%= data.mean %><br />
-        <strong>Genres:</strong> <%= data.genres.map((genre) => ' '+genre.name) %><br />
-        <strong>Streaming Links: (May contain broken links)</strong> 
-        <div class="streaming-links">
-          <% if (data.mediaLinks.length > 0) { data.mediaLinks.forEach((site) => { %>
-            <a href="<%= site.url %>" style="background-color: <%= site.color %>;" data-color="<%= site.color %>" target="_blank">
-              <img src="<%= site.icon %>">
-              <span><%= site.site %><span>
-            </a>
-          <% })} else { %>
-            <div class="no-streamlinks-msg">No Streaming Links Available</div>
-          <% } %>
-        </div>
-        <strong>Episodes:</strong> <%= data.num_episodes %><br />
-        <strong>Status:</strong> <%= data.status %><br />
-        <strong>Synopsis:</strong> <div class="synopsis"> <%- data.synopsis.replace(/\n\n/g,'<br>') %></div><br />
-      </div>
-    </div>
-  </div>
-<% } %> 
 <%- include("footer.ejs") %>
 </body>

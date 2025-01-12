@@ -1,0 +1,34 @@
+<%- include("header.ejs") %>
+<body>
+  <%- include("userform.ejs") %>
+  <h1>Random Anime from Your Plan To Watch List:</h1>
+  <div class="anime-content">
+    <div class="anime-info">
+      <div class="anime-cover">
+        <a href="https://myanimelist.net/anime/<%= data.id %>" target="_blank"
+          ><img border="0" src="<%= data.main_picture.large %>" alt="<%= data.title %>"
+        /></a>
+      </div>
+      <div class="anime-details">
+        <strong>Name:</strong> <%= data.title %><br />
+        <strong>Rating:</strong> <%= data.mean %><br />
+        <strong>Genres:</strong> <%= data.genres.map((genre) => ' '+genre.name) %><br />
+        <strong>Streaming Links: (May contain broken links)</strong> 
+        <div class="streaming-links">
+          <% if (data.mediaLinks.length > 0) { data.mediaLinks.forEach((site) => { %>
+            <a href="<%= site.url %>" style="background-color: <%= site.color %>;" data-color="<%= site.color %>" target="_blank">
+              <img src="<%= site.icon %>">
+              <span><%= site.site %><span>
+            </a>
+          <% })} else { %>
+            <div class="no-streamlinks-msg">No Streaming Links Available</div>
+          <% } %>
+        </div>
+        <strong>Episodes:</strong> <%= data.num_episodes %><br />
+        <strong>Status:</strong> <%= data.status %><br />
+        <strong>Synopsis:</strong> <div class="synopsis"> <%- data.synopsis.replace(/\n\n/g,'<br>') %></div><br />
+      </div>
+    </div>
+  </div>
+  <%- include("footer.ejs") %>
+</body>

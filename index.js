@@ -22,8 +22,9 @@ var list = [];
 const MAL_URL = "https://api.myanimelist.net/v2/";
 const MAL_LIMIT = process.env.MAL_LIMIT || 1000;
 const MAL_PTW_EXT = `/animelist?status=plan_to_watch&limit=${MAL_LIMIT}`;
-const MAL_FIELDS =
-  "?fields=id,title,num_episodes,main_picture,synopsis,mean,status,genres";
+const MAL_PTR_EXT = `/mangalist?status=plan_to_read&limit=${MAL_LIMIT}`;
+const MAL_ANIME_FIELDS = "?fields=id,title,num_episodes,main_picture,synopsis,mean,status,genres";
+const MAL_MANGA_FIELDS = "?fields=id,title,num_chapters,main_picture,synopsis,mean,status,genres";
 const MAL_HEADER = {
   headers: {
     "X-MAL-CLIENT-ID": process.env.MAL_CLIENT_ID,
@@ -37,12 +38,16 @@ const GITHUB_AUTH_HEADER = {
   },
 };
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
+  res.render("index.ejs", { data: null, err: null })
+})
+
+app.get("/anime", async (req, res) => {
   if (list.length != 0) {
     const random = Math.floor(Math.random() * list.length);
     const MAL_ANIME_ID = list[random].id;
     const response = await axios.get(
-      MAL_URL + "anime/" + MAL_ANIME_ID + MAL_FIELDS,
+      MAL_URL + "anime/" + MAL_ANIME_ID + MAL_ANIME_FIELDS,
       MAL_HEADER,
     );
     const AL_URL = 'https://graphql.anilist.co',
@@ -69,7 +74,26 @@ app.get("/", async (req, res) => {
       },
     });
     response.data.mediaLinks = AL_response.data.data.Media.externalLinks.filter((site) => site.type == "STREAMING");
-    res.render("index.ejs", {
+    res.render("anime.ejs", {
+      data: response.data,
+      limit: DISP_LIMIT,
+      err: null,
+    });
+    list = [];
+  } else {
+    res.render("index.ejs", { data: null, err: null });
+  }
+});
+
+app.get("/manga", async (req, res) => {
+  if (list.length != 0) {
+    const random = Math.floor(Math.random() * list.length);
+    const MAL_MANGA_ID = list[random].id;
+    const response = await axios.get(
+      MAL_URL + "manga/" + MAL_MANGA_ID + MAL_MANGA_FIELDS,
+      MAL_HEADER,
+    );
+    res.render("manga.ejs", {
       data: response.data,
       limit: DISP_LIMIT,
       err: null,
@@ -83,7 +107,8 @@ app.get("/", async (req, res) => {
 app.post("/", async (req, res) => {
   console.log(req.body);
   const username = req.body.mal;
-  const url = MAL_URL + "users/" + username + MAL_PTW_EXT;
+  const randomthing = req.body.randomthing;
+  const url = MAL_URL + "users/" + username + ((randomthing==="anime") ? MAL_PTW_EXT : MAL_PTR_EXT);
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
     console.log(err.status + " " + err.response.data.message);
     res.render("index.ejs", { data: null, err: err.toJSON() });
@@ -93,7 +118,7 @@ app.post("/", async (req, res) => {
     for (var i = 0; i < data.length; i++) {
       list.push(data[i].node);
     }
-    res.redirect("/");
+    res.redirect("/"+randomthing);
   }
 });
 
