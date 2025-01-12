@@ -30,7 +30,25 @@ const MAL_HEADER = {
     "X-MAL-CLIENT-ID": process.env.MAL_CLIENT_ID,
   },
 };
-
+const AL_URL = 'https://graphql.anilist.co';
+const AL_QUERY = (ID) => {
+  return {
+    query: `query ($ID: Int) {
+      Media(idMal: $ID) {
+        externalLinks {
+          color
+          icon
+          url
+          site
+          type
+        }
+      }
+    }`,
+    variables: {
+      ID: ID
+    },
+  }
+};
 const GITHUB_CONTRIBUTIONS_URL = process.env.GITHUB_CONTRIBUTIONS_URL;
 const GITHUB_AUTH_HEADER = {
   headers: {
@@ -38,11 +56,7 @@ const GITHUB_AUTH_HEADER = {
   },
 };
 
-app.get("/", (req, res) => {
-  res.render("index.ejs", { data: null, err: null })
-})
-
-app.get("/anime", async (req, res) => {
+app.get("/", async (req, res) => {
   if (list.length != 0) {
     const random = Math.floor(Math.random() * list.length);
     const MAL_ANIME_ID = list[random].id;
@@ -50,38 +64,22 @@ app.get("/anime", async (req, res) => {
       MAL_URL + "anime/" + MAL_ANIME_ID + MAL_ANIME_FIELDS,
       MAL_HEADER,
     );
-    const AL_URL = 'https://graphql.anilist.co',
-      AL_QUERY = {
-        query: `query ($MAL_ANIME_ID: Int) {
-          Media(idMal: $MAL_ANIME_ID) {
-            externalLinks {
-              color
-              icon
-              url
-              site
-              type
-            }
-          }
-        }`,
-        variables: {
-          MAL_ANIME_ID: MAL_ANIME_ID
-        },
-      };
-    const AL_response = await axios.post(AL_URL, AL_QUERY, {
+    const AL_response = await axios.post(AL_URL, AL_QUERY(MAL_ANIME_ID), {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
     });
     response.data.mediaLinks = AL_response.data.data.Media.externalLinks.filter((site) => site.type == "STREAMING");
-    res.render("anime.ejs", {
+    res.render("index.ejs", {
       data: response.data,
+      type: "anime",
       limit: DISP_LIMIT,
       err: null,
     });
     list = [];
   } else {
-    res.render("index.ejs", { data: null, err: null });
+    res.render("index.ejs", { data: null, type: "anime", err: null });
   }
 });
 
@@ -93,32 +91,56 @@ app.get("/manga", async (req, res) => {
       MAL_URL + "manga/" + MAL_MANGA_ID + MAL_MANGA_FIELDS,
       MAL_HEADER,
     );
-    res.render("manga.ejs", {
+    const AL_response = await axios.post(AL_URL, AL_QUERY(MAL_MANGA_ID), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    });
+    response.data.mediaLinks = AL_response.data.data.Media.externalLinks.filter((site) => site.type == "STREAMING");
+    res.render("index.ejs", {
       data: response.data,
+      type: "manga",
       limit: DISP_LIMIT,
       err: null,
     });
     list = [];
   } else {
-    res.render("index.ejs", { data: null, err: null });
+    res.render("index.ejs", { data: null, type: "manga", err: null });
   }
 });
 
 app.post("/", async (req, res) => {
   console.log(req.body);
   const username = req.body.mal;
-  const type = req.body.type;
-  const url = MAL_URL + "users/" + username + ((type==="anime") ? MAL_PTW_EXT : MAL_PTR_EXT);
+  const url = MAL_URL + "users/" + username + MAL_PTW_EXT;
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
     console.log(err.status + " " + err.response.data.message);
-    res.render("index.ejs", { data: null, err: err.toJSON() });
+    res.render("index.ejs", { data: null, type: "anime", err: err.toJSON() });
   });
   if (response) {
     const data = response.data.data;
     for (var i = 0; i < data.length; i++) {
       list.push(data[i].node);
     }
-    res.redirect("/"+type);
+    res.redirect("/");
+  }
+});
+
+app.post("/manga", async (req, res) => {
+  console.log(req.body);
+  const username = req.body.mal;
+  const url = MAL_URL + "users/" + username + MAL_PTR_EXT;
+  const response = await axios.get(url, MAL_HEADER).catch((err) => {
+    console.log(err.status + " " + err.response.data.message);
+    res.render("index.ejs", { data: null, type: "manga", err: err.toJSON() });
+  });
+  if (response) {
+    const data = response.data.data;
+    for (var i = 0; i < data.length; i++) {
+      list.push(data[i].node);
+    }
+    res.redirect("/manga");
   }
 });
 
