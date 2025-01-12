@@ -3,7 +3,7 @@
 <div class="wrap">
   <h1>Enter Your MyAnimeList Profile:</h1>
   <div class="search">
-    <form action="/" method="post">
+    <form action="<%= (type === 'anime' ? '/' : '/manga') %>" method="post">
       <input
         type="text"
         name="mal"
@@ -36,11 +36,11 @@
 <% } %>
 <% } %>
   <% if(data!=null) {%>
-  <h1>Random Anime from Your Plan To Watch List:</h1>
+    <h1>Random <%= (type === 'anime' ? 'Anime' : 'Manga') %> from Your Plan To <%= (type === 'anime' ? 'Watch' : 'Read') %> List:</h1>
   <div class="anime-content">
     <div class="anime-info">
       <div class="anime-cover">
-        <a href="https://myanimelist.net/anime/<%= data.id %>" target="_blank"
+        <a href="https://myanimelist.net/<%= type %>/<%= data.id %>" target="_blank"
           ><img border="0" src="<%= data.main_picture.large %>" alt="<%= data.title %>"
         /></a>
       </div>
@@ -48,7 +48,7 @@
         <strong>Name:</strong> <%= data.title %><br />
         <strong>Rating:</strong> <%= data.mean %><br />
         <strong>Genres:</strong> <%= data.genres.map((genre) => ' '+genre.name) %><br />
-        <strong>Streaming Links: (May contain broken links)</strong> 
+        <strong><%= (type === 'anime' ? 'Streaming' : 'Reading') %> Links: (May contain broken links)</strong> 
         <div class="streaming-links">
           <% if (data.mediaLinks.length > 0) { data.mediaLinks.forEach((site) => { %>
             <a href="<%= site.url %>" style="background-color: <%= site.color %>;" data-color="<%= site.color %>" target="_blank">
@@ -59,7 +59,7 @@
             <div class="no-streamlinks-msg">No Streaming Links Available</div>
           <% } %>
         </div>
-        <strong>Episodes:</strong> <%= data.num_episodes %><br />
+        <strong>Episodes:</strong> <%= (type === 'anime' ? data.num_episodes : data.num_chapters) %><br />
         <strong>Status:</strong> <%= data.status %><br />
         <strong>Synopsis:</strong> <div class="synopsis"> <%- data.synopsis.replace(/\n\n/g,'<br>') %></div><br />
       </div>
