@@ -107,8 +107,8 @@ app.get("/manga", async (req, res) => {
 app.post("/", async (req, res) => {
   console.log(req.body);
   const username = req.body.mal;
-  const randomthing = req.body.randomthing;
-  const url = MAL_URL + "users/" + username + ((randomthing==="anime") ? MAL_PTW_EXT : MAL_PTR_EXT);
+  const type = req.body.type;
+  const url = MAL_URL + "users/" + username + ((type==="anime") ? MAL_PTW_EXT : MAL_PTR_EXT);
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
     console.log(err.status + " " + err.response.data.message);
     res.render("index.ejs", { data: null, err: err.toJSON() });
@@ -118,7 +118,7 @@ app.post("/", async (req, res) => {
     for (var i = 0; i < data.length; i++) {
       list.push(data[i].node);
     }
-    res.redirect("/"+randomthing);
+    res.redirect("/"+type);
   }
 });
 
