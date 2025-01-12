@@ -470,7 +470,33 @@ footer {
     text-align: center;
   }
 }
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
+.about-section h1 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.about-section ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.about-section li {
+  margin: 5px 0;
+}
+
+.about-section .cta {
+  font-weight: bold;
+  color: #003366;
+}
 .streaming-links {
   display: flex;
   flex-wrap: wrap;
