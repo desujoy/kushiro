@@ -42,11 +42,12 @@ cd kushiro
 
 ### 2️⃣ Set Up the Environment:
 - Retrieve your **MyAnimeList Client ID** by creating an application on [MyAnimeList API Configuration](https://myanimelist.net/apiconfig).
-- Copy the Client ID and paste it into the `sample.env` file.
-- Rename `sample.env` to `.env`:
+- Copy `sample.env` as `.env`:
+  
   ```bash
-  mv sample.env .env
+  cp sample.env .env
   ```
+- Copy the Client ID and paste it into the `.env` file.
 
 ### 3️⃣ Install Dependencies:
 ```bash
