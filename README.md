@@ -1,6 +1,6 @@
 <h1 align="center">🌸 Kushiro - Your Random Anime Selector</h1>
   <p align="center">
-    <img src="https://img.shields.io/github/actions/workflow/status/desujoy/kushiro/docker-build-pr.yml?style=for-the-badge&logo=github&logoColor=D9E0EE&labelColor=292324)"/>&nbsp;
+    <img src="https://img.shields.io/github/actions/workflow/status/desujoy/kushiro/docker-image.yml?style=for-the-badge&logo=github&logoColor=D9E0EE&labelColor=292324)"/>&nbsp;
     <a href="https://github.com/desujoy/kushiro/stargazers" target="_blank">
     <img src="https://img.shields.io/github/stars/desujoy/kushiro?style=for-the-badge&logo=andela&color=CAC992&logoColor=D9E0EE&labelColor=292324)"/></a>&nbsp;
     <a href="https://github.com/desujoy/kushiro/blob/master/LICENSE" target="_blank">
