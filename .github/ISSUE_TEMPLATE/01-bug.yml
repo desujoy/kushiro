@@ -13,7 +13,19 @@ body:
       label: What happened?
       description: Also tell us, what did you expect to happen?
       placeholder: Tell us what you see!
-      value: "A bug happened!"
+      value: |
+        # Description  
+        
+        # Steps to Reproduce  
+        -
+        -
+        
+        # Expected Behavior  
+        
+        # Actual Behavior  
+        
+        # Screenshots
+
     validations:
       required: true
   - type: dropdown
@@ -26,6 +38,15 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What screen size are you seeing the problem on?
+      multiple: true
+      options:
+        - Desktop
+        - Tablet
+        - Mobile
   - type: checkboxes
     id: terms
     attributes:
