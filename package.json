@@ -1,7 +1,7 @@
 {
   "name": "kushiro",
   "version": "1.2.1",
-  "description": "",
+  "description": "**Kushiro** is a simple yet delightful tool designed to fetch and display random anime from your \"Plan to Watch\" list on MyAnimeList (MAL). If you're unsure what to watch next, let Kushiro surprise you with a random pick!",
   "main": "index.js",
   "type": "module",
   "scripts": {
