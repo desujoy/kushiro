@@ -59,7 +59,7 @@
             <div class="no-streamlinks-msg">No Streaming Links Available</div>
           <% } %>
         </div>
-        <strong>Episodes:</strong> <%= (type === 'anime' ? data.num_episodes : data.num_chapters) %><br />
+        <strong><%= (type === 'anime' ? "Episodes" : "Chapters") %>:</strong> <%= (type === 'anime' ? data.num_episodes : data.num_chapters) %><br />
         <strong>Status:</strong> <%= data.status %><br />
         <strong>Synopsis:</strong> <div class="synopsis"> <%- data.synopsis.replace(/\n\n/g,'<br>') %></div><br />
       </div>
