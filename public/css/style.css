@@ -361,6 +361,7 @@ nav {
   padding: 0.5rem 2rem;
   background-color: var(--color-primary);
   position: relative;
+  z-index: 999;
   --color-background: white;
 }
 nav .logo {
