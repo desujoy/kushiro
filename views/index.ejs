@@ -56,7 +56,7 @@
               <span><%= site.site %><span>
             </a>
           <% })} else { %>
-            <div class="no-streamlinks-msg">No Streaming Links Available</div>
+            <div class="no-streamlinks-msg">No <%= (type === 'anime' ? 'Streaming' : 'Reading') %> Links Available</div>
           <% } %>
         </div>
         <strong><%= (type === 'anime' ? "Episodes" : "Chapters") %>:</strong> <%= (type === 'anime' ? data.num_episodes : data.num_chapters) %><br />
