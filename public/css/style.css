@@ -357,7 +357,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0.5rem 2rem;
   background-color: var(--color-primary);
   position: relative;
   --color-background: white;
@@ -423,7 +423,7 @@ nav ul li a:hover {
     position: absolute;
     justify-content: space-evenly;
     box-sizing: border-box;
-    top: 78px;
+    top: 94px;
     margin: 0;
     left: 0;
     background-color: var(--color-primary);
@@ -465,6 +465,7 @@ footer {
 .social-icons {
   display: flex;
   gap: 10px;
+  position: absolute;
 }
 
 .social-icons svg {
@@ -501,6 +502,7 @@ footer {
   }
 
   .social-icons {
+    position: relative;
     justify-content: center; /* Center align icons */
     margin-bottom: 10px;
   }
