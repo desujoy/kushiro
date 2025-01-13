@@ -1,4 +1,15 @@
-# 🌸 Kushiro - Your Random Anime Selector
+<h1 align="center">🌸 Kushiro - Your Random Anime Selector</h1>
+  <p align="center">
+    <img src="https://img.shields.io/github/actions/workflow/status/desujoy/kushiro/docker-build-pr.yml?style=for-the-badge&logo=github&logoColor=D9E0EE&labelColor=292324)"/>&nbsp;
+    <a href="https://github.com/desujoy/kushiro/stargazers" target="_blank">
+    <img src="https://img.shields.io/github/stars/desujoy/kushiro?style=for-the-badge&logo=andela&color=CAC992&logoColor=D9E0EE&labelColor=292324)"/></a>&nbsp;
+    <a href="https://github.com/desujoy/kushiro/blob/master/LICENSE" target="_blank">
+    <img src="https://img.shields.io/badge/LICENSE-MIT-green?style=for-the-badge&logo=libreofficewriter&color=FFB686&logoColor=D9E0EE&labelColor=292324)"/></a>&nbsp;
+    <a href="https://github.com/desujoy/kushiro/issues" target="_blank">
+    <img src="https://img.shields.io/github/issues/desujoy/kushiro?style=for-the-badge&logo=git&color=CCE8E9&logoColor=D9E0EE&labelColor=292324)"/></a>&nbsp;
+    <a href="https://github.com/desujoy/kushiro/pulls" target="_blank">
+      <img src="https://img.shields.io/github/issues-pr/desujoy/kushiro?style=for-the-badge&logo=git&color=CCE8E9&logoColor=D9E0EE&labelColor=292324)"/></a>
+  </p>
 
 ## ✨ Overview
 **Kushiro** is a simple yet delightful tool designed to fetch and display random anime from your "Plan to Watch" list on MyAnimeList (MAL). If you're unsure what to watch next, let Kushiro surprise you with a random pick!
@@ -31,11 +42,12 @@ cd kushiro
 
 ### 2️⃣ Set Up the Environment:
 - Retrieve your **MyAnimeList Client ID** by creating an application on [MyAnimeList API Configuration](https://myanimelist.net/apiconfig).
-- Copy the Client ID and paste it into the `sample.env` file.
-- Rename `sample.env` to `.env`:
+- Copy `sample.env` as `.env`:
+  
   ```bash
-  mv sample.env .env
+  cp sample.env .env
   ```
+- Copy the Client ID and paste it into the `.env` file.
 
 ### 3️⃣ Install Dependencies:
 ```bash
@@ -64,22 +76,7 @@ Open the application in your browser at:
 ---
 
 ## 🤝 Contributing
-We ❤️ contributions! Here’s how you can contribute:
-
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "Add your descriptive message here"
-   ```
-4. Push your branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Create a pull request on GitHub.
+Please follow the [CONTRIBUTING GUIDE](CONTRIBUTING.md)
 
 ---
 
@@ -107,4 +104,3 @@ If you encounter any issues or have questions, feel free to open an issue on the
 
 ## 🎉 Happy Watching!
 Let **Kushiro** guide your next anime journey! 🌟
-

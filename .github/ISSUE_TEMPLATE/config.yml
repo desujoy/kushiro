@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: General Question
+    url: https://github.com/desujoy/kushiro/discussions
+    about: If you have a general question or need help, start a discussion here.
+  - name: Report Security Vulnerability
+    url: mailto:sujoydeofficial@gmail.com
+    about: If you found a security issue, please report it confidentially using this link.
