@@ -39,7 +39,7 @@ body:
         - Safari
         - Microsoft Edge
   - type: dropdown
-    id: browsers
+    id: screensizes
     attributes:
       label: What screen size are you seeing the problem on?
       multiple: true
