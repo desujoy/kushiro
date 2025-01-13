@@ -1,7 +1,7 @@
 {
     "name": "Kushiro",
     "short_name": "Kushiro",
-    "description": "Kushiro is a platform for watching anime, tracking your watchlist, and interacting with the community.",
+    "description": "Kushiro is a tool that randomly selects anime from your \"Plan to Watch\" list on MyAnimeList (MAL), helping you discover your next watch effortlessly!",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
