@@ -1,0 +1,22 @@
+{
+    "name": "Kushiro",
+    "short_name": "Kushiro",
+    "description": "Kushiro is a tool that randomly selects anime from your \"Plan to Watch\" list on MyAnimeList (MAL), helping you discover your next watch effortlessly!",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ff6347",
+    "icons": [
+      {
+        "src": "/assets/kushiro.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/kushiro.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
