@@ -32,5 +32,11 @@
 </footer>
 <script src="js/main.js"></script>
 <script>
+ const hasSearched = localStorage.getItem('hasSearched');
+ console.log(hasSearched);
+ if (hasSearched === 'true') {
+   const footer = document.querySelector('footer');
+   footer.classList.add('');
+}
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>

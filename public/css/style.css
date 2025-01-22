@@ -148,12 +148,13 @@ img {
 }
 
 .fixed-bottom {
-  font-family: cursive;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  text-align: center;
+  background-color: var(--color-primary);
+  z-index: 1000;
+  padding: 10px 0;
 }
 
 .copyright-box > a {
@@ -440,7 +441,7 @@ nav ul li a:hover {
   }
 
   nav ul.show {
-    height: 210px;
+    height: auto;
   }
 
   nav .hamburger {
@@ -518,6 +519,7 @@ main {
   margin: 20px auto;
   padding: 20px;
   background: #fff;
+  padding-bottom: 100px; 
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -645,6 +647,7 @@ main {
 }
 
 .testimonial-form-container {
+  color: #768ecf;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -654,10 +657,10 @@ main {
 
 .testimonial-card {
   width: 100%;
-  max-width: 600px;
+  max-width:650px;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(187, 182, 182, 0.1);
   padding: 30px;
 }
 
@@ -668,7 +671,7 @@ main {
 .testimonial-card input[type="text"],
 .testimonial-card input[type="email"],
 .testimonial-card textarea {
-  width: 100%;
+  width: 95%;
   padding: 12px 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -743,7 +746,7 @@ main {
 }
 
 .testimonials-list .card-title {
-    color: #2c3e50;
+    color: #0061c2;
     font-weight: 600;
     margin-bottom: 15px;
 }
@@ -787,4 +790,18 @@ main {
         gap: 15px;
         padding: 10px;
     }
+}
+.success-message {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4c66af;
+  color: white;
+  padding: 20px;
+  margin-top: 5px;
+  width:fit-content;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
 }

@@ -5,7 +5,7 @@ import "dotenv/config";
 import cron from "node-cron";
 import fetch from "node-fetch";
 import mongoose from "mongoose";
-import Testimonial from "./public/models/testimonial.js";
+import Testimonial from "./models/testimonial.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
@@ -106,7 +106,7 @@ app.get("/", async (req, res) => {
 app.get('/testimonial', async (req, res) => {
     try {
         const testimonials = await Testimonial.find().sort({ date: -1 });
-        res.render('testimonials.ejs', {data:{page:'about'},testimonials});
+        res.render('testimonials.ejs', {data:{testimonials:testimonials},testimonials});
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');

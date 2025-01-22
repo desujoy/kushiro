@@ -25,22 +25,22 @@
                 </div>
             <% }) %>
         <% } else { %>
-            <p>No testimonials yet. Be the first to add one!</p>
+            <p>No testimonials yet. Be the first to add one! To upload testimonial first use the app</p>
         <% } %>
     </div>
         
     <!-- Add Testimonial Form -->
-    <div class="testimonial-form-container">
+    <div class="testimonial-form-container" style="display: none;" id="testimonialForm">
         <div class="testimonial-card">
             <h3 class="text-center mb-4">Add a Testimonial</h3>
-            <form action="/add" method="POST">
+            <form action="/add" method="POST" onsubmit="storeSearch()">
                 <div class="form-group mb-3">
                     <label for="name">Your Name:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="content">Your Testimonial:</label>
-                    <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                    <textarea class="form-control" id="content" name="content" rows="3"   required></textarea>
                 </div>
                 <div class="form-group mb-3">
                     <label for="gmail">Gmail:</label>
@@ -75,5 +75,33 @@
         </div>
     </div>
 </div>
+<div id="successMessage" class="success-message" style="display: none;">
+    <h4 class="text-center">You Have Added Your Testimonial</h4>
+</div>
+
+<script>
+
+    function storeSearch() {
+        localStorage.setItem("addedTes", "true");
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('addedTes') == null) {
+        localStorage.setItem("addedTes", "false");
+    }
+        const hasSearched = localStorage.getItem('hasSearched');
+        const addedTes = localStorage.getItem('addedTes');
+        const formContainer = document.getElementById('testimonialForm');
+        const successMessage = document.getElementById('successMessage');
+      
+        if(addedTes==='true'){
+            successMessage.style.display = '';
+        }
+        if (hasSearched === 'true'&& addedTes==='false') {
+            formContainer.style.display = '';
+        } else {
+            formContainer.style.display = 'none';
+        }
+    });
+</script>
 
 <%- include("footer.ejs") %>
