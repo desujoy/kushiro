@@ -805,3 +805,83 @@ main {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   z-index: 1000;
 }
+
+/* Dark Mode Styles with Subtle Contrast */
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .card {
+  background: #1a1a1a; /* Slightly lighter than the darkest background */
+  color: var(--color-foreground);
+  border: 1px solid #333; /* Subtle border for contrast */
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .card-title {
+  color: var(--color-primary);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .card-text {
+  color: #ccc; /* Light gray for better readability */
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .rating-display .fa-star {
+  color: #555; /* Darker gray for unselected stars */
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .rating-display .fa-star.checked {
+  color: #ffd700; /* Gold for selected stars */
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .text-muted {
+  color: #888; /* Lighter gray for muted text */
+}
+/* Dark Mode Styles */
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card {
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card input[type="text"],
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card input[type="email"],
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card textarea {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card label {
+  color: var(--color-foreground);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card button[type="submit"] {
+  background: var(--color-primary);
+  color: var(--color-foreground);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .card {
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .card-title {
+  color: var(--color-primary);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .card-text {
+  color: var(--color-foreground);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .rating-display .fa-star {
+  color: var(--color-secondary);
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonials-list .rating-display .fa-star.checked {
+  color: #ffd700;
+}
+/* Dark Mode Styles */
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card .rating label {
+  color: #555; /* Darker gray for unselected stars in dark mode */
+}
+
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card .rating input:checked ~ label,
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card .rating label:hover,
+html:has(#dark-theme-switch-checkbox:checked) .testimonial-card .rating label:hover ~ label {
+  color: #ffd700; /* Gold color for selected/hovered stars in dark mode */
+}
