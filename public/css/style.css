@@ -474,7 +474,7 @@ footer {
   height: 40px;
   width: 40px;
   transition: all 0.3s ease;
-  color: var(--color-background);
+  color: #fff;
 }
 
 .social-icons svg:hover {
