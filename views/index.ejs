@@ -3,7 +3,7 @@
 <div class="wrap">
   <h1>Enter Your MyAnimeList Profile:</h1>
   <div class="search">
-    <form action="<%= (type === 'anime' ? '/' : '/manga') %>" method="post">
+    <form action="<%= (type === 'anime' ? '/' : '/manga') %>" method="post" onsubmit="storeSearch()">
       <input
         type="text"
         name="mal"
@@ -68,3 +68,9 @@
 <% } %> 
 <%- include("footer.ejs") %>
 </body>
+<script>
+  // Function to store search status in local storage
+  function storeSearch() {
+    localStorage.setItem("hasSearched", "true");
+  }
+</script>

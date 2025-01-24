@@ -1,0 +1,107 @@
+<%- include("header.ejs") %>
+
+<div class="container mt-5">
+    <h1>Testimonials</h1>
+
+
+    <!-- Display Testimonials -->
+    <div class="testimonials-list">
+        <% if(testimonials.length > 0) { %>
+            <% testimonials.forEach(testimonial => { %>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= testimonial.name %></h5>
+                        <h5 class="card-subtitle mb-2 text-muted"><%= testimonial.gmail %></h5>
+                        <p class="card-text"><%= testimonial.content %></p>
+                        <div class="rating-display">
+                            <% for(let i = 1; i <= 5; i++) { %>
+                                <i class="fas fa-star <%= i <= testimonial.rating ? 'checked' : '' %>"></i>
+                            <% } %>
+                        </div>
+                        <small class="text-muted">
+                            <%= testimonial.date.toLocaleDateString() %>
+                        </small>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No testimonials yet. Be the first to add one! To upload testimonial first use the app</p>
+        <% } %>
+    </div>
+        
+    <!-- Add Testimonial Form -->
+    <div class="testimonial-form-container" style="display: none;" id="testimonialForm">
+        <div class="testimonial-card">
+            <h3 class="text-center mb-4">Add a Testimonial</h3>
+            <form action="/add" method="POST" onsubmit="storeSearch()">
+                <div class="form-group mb-3">
+                    <label for="name">Your Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="content">Your Testimonial:</label>
+                    <textarea class="form-control" id="content" name="content" rows="3"   required></textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="gmail">Gmail:</label>
+                    <input 
+        type="email" 
+        class="form-control" 
+        id="gmail" 
+        name="gmail" 
+        pattern="[a-z0-9._%+-]+@gmail.com$"
+        placeholder="example@gmail.com"
+        title="Please enter a valid Gmail address"
+        required
+    >
+                </div>
+                <div class="form-group mb-3">
+                    <label>Rating:</label>
+                    <div class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" required/>
+                        <label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star4" name="rating" value="4"/>
+                        <label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star3" name="rating" value="3"/>
+                        <label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star2" name="rating" value="2"/>
+                        <label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star1" name="rating" value="1"/>
+                        <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="successMessage" class="success-message" style="display: none;">
+    <h4 class="text-center">You Have Added Your Testimonial</h4>
+</div>
+
+<script>
+
+    function storeSearch() {
+        localStorage.setItem("addedTes", "true");
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('addedTes') == null) {
+        localStorage.setItem("addedTes", "false");
+    }
+        const hasSearched = localStorage.getItem('hasSearched');
+        const addedTes = localStorage.getItem('addedTes');
+        const formContainer = document.getElementById('testimonialForm');
+        const successMessage = document.getElementById('successMessage');
+      
+        if(addedTes==='true'){
+            successMessage.style.display = '';
+        }
+        if (hasSearched === 'true'&& addedTes==='false') {
+            formContainer.style.display = '';
+        } else {
+            formContainer.style.display = 'none';
+        }
+    });
+</script>
+
+<%- include("footer.ejs") %>

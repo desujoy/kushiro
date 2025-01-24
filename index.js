@@ -4,6 +4,15 @@ import helmet from "helmet";
 import "dotenv/config";
 import cron from "node-cron";
 import fetch from "node-fetch";
+import mongoose from "mongoose";
+import Testimonial from "./models/testimonial.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import path from 'path';
+
+// Get directory name for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 if (process.env.MAL_CLIENT_ID == undefined) {
   console.log("Please set the environment variables");
@@ -14,9 +23,18 @@ const app = express();
 const port = 3000;
 const DISP_LIMIT = 1;
 
+// Set up view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet.hidePoweredBy());
+
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Connected successfully to MongoDB.'))
+  .catch((err) => console.error('Error connecting to MongoDB:', err));
 
 var list = [];
 const MAL_URL = "https://api.myanimelist.net/v2/";
@@ -81,6 +99,35 @@ app.get("/", async (req, res) => {
   } else {
     res.render("index.ejs", { data: null, type: "anime", err: null });
   }
+});
+
+
+// Display testimonials page
+app.get('/testimonial', async (req, res) => {
+    try {
+        const testimonials = await Testimonial.find().sort({ date: -1 });
+        res.render('testimonials.ejs', {data:{testimonials:testimonials},testimonials});
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Add new testimonial
+app.post('/add', async (req, res) => {
+    try {
+        const newTestimonial = new Testimonial({
+            name: req.body.name,
+            content: req.body.content,
+            gmail: req.body.gmail,
+            rating: req.body.rating
+        });
+        await newTestimonial.save();
+        res.redirect('/testimonial');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
 });
 
 app.get("/manga", async (req, res) => {
