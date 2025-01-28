@@ -4,6 +4,7 @@
   --color-primary: #2E51A2;
   --color-secondary: #657789;
   --color-border: #CCCCCC;
+  --color-text: #333;
 }
 
 html:has(#dark-theme-switch-checkbox:checked) {
@@ -12,6 +13,7 @@ html:has(#dark-theme-switch-checkbox:checked) {
   --color-primary: #2E51A2;
   --color-secondary: #657789;
   --color-border: #222222;
+  --color-text: #fff;
 }
 
 body {
@@ -60,7 +62,7 @@ img {
   border-radius: 5px 0 0 5px;
   outline: none;
   background-color: var(--color-background);
-  color: var(--color-secondary);
+  color: var(--color-text);
 }
 
 .searchButton {
