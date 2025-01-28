@@ -136,10 +136,9 @@ img {
 }
 
 .copyright-box {
-  font-family: "Qwitcher Grypen", cursive;
-  font-weight: 400;
+  font-family: 'Protest Strike', sans-serif; 
   font-style: normal;
-  font-size: x-large;
+  font-size: 1.3rem; 
   left: 0;
   bottom: 0;
   width: 100%;
