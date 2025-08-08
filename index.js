@@ -165,7 +165,7 @@ app.get("/about", async (req, res) => {
 });
 app.post("/", async (req, res) => {
   console.log(req.body);
-  const username = req.body.mal;
+  const username = req.body.mal.trim();
   const url = MAL_URL + "users/" + username + MAL_PTW_EXT;
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
     console.log(err.status + " " + err.response.data.message);
@@ -182,7 +182,7 @@ app.post("/", async (req, res) => {
 
 app.post("/manga", async (req, res) => {
   console.log(req.body);
-  const username = req.body.mal;
+  const username = req.body.mal.trim();
   const url = MAL_URL + "users/" + username + MAL_PTR_EXT;
   const response = await axios.get(url, MAL_HEADER).catch((err) => {
     console.log(err.status + " " + err.response.data.message);
